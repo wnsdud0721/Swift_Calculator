@@ -130,16 +130,13 @@ var fourOperator = readLine()!
 var secondNumber = readLine()!
 
 class Calculator {
+    // Calculator가 AbstractOperation 인스턴스와 연결되어, 해당 인스턴스의 연산을 실행하는데 사용
     var operate: AbstractOperation
     // AbstractOperation으로 가는 통로를 만들어주는 것
     init(operate: AbstractOperation) {
         self.operate = operate
     }
-//    var operation = AbstractOperation(first: firstNumber, second: secondNumber)
-//    init(operation: AbstractOperation = AbstractOperation(first: firstNumber, second: secondNumber)) {
-//        self.operation = operation
-//    }
-    
+
     func operationCalculator () {
         let result = operate.calculation()
         print(result)
@@ -147,6 +144,8 @@ class Calculator {
 }
 
 class AbstractOperation {
+    // AbstractOperation은 정말 계산만 담당
+    // 프로퍼티를 생성하고, 초기화하는 부분을 Calculator로 이동
     var first: Double
     var second: Double
 
@@ -154,7 +153,7 @@ class AbstractOperation {
         self.first = Double(first)!
         self.second = Double(second)!
     }
-    
+
     func calculation () -> Double {
         return 0
     }
@@ -162,35 +161,35 @@ class AbstractOperation {
 
 class AddClass: AbstractOperation {
     override func calculation () -> Double {
-        
+
         return first + second
     }
 }
 
 class SubstractClass: AbstractOperation {
     override func calculation () -> Double {
-        
+
         return first - second
     }
 }
 
 class MultiplyClass: AbstractOperation {
     override func calculation () -> Double {
-        
+
         return first * second
     }
 }
 
 class DivideClass: AbstractOperation {
     override func calculation () -> Double {
-        
+
         return first / second
     }
 }
 
 class RestClass: AbstractOperation {
     override func calculation () -> Double {
-        
+
         return first - (second * Double((Int(first / second))))
     }
 }
@@ -218,3 +217,130 @@ if let abstractoperation = abstractoperation {
     calculator.operationCalculator()
 }
 
+
+// 1. 각 연산자 클래스 마다 값을 입력?
+// init을 이용해서 구현?
+// protocol 사용
+//var firstNumber = readLine()!
+//var fourOperator = readLine()!
+//var secondNumber = readLine()!
+//
+//class Calculator {
+//    var operate: AbstractOperation
+//
+//    init(operate: AbstractOperation) {
+//        self.operate = operate
+//    }
+//
+//    func operationCalculator () {
+//        let result = operate.calculation()
+//        print(result)
+//    }
+//}
+//
+//protocol AbstractOperation {
+//    // get: 읽기, set: 쓰기(값을 입력할 수 있다는 의미)
+//    var first: Double { get set }
+//    var second: Double { get set }
+//
+//    // init을 프로토콜에서 사용하게 되면, 무조건 이 규칙을 따라야 함
+//    // init (first: String, second: String)
+//
+//    func calculation () -> Double
+//}
+//
+//class AddClass: AbstractOperation {
+//    var first: Double
+//    var second: Double
+//    init(first: String, second: String) {
+//        self.first = Double(first)!
+//        self.second = Double(second)!
+//    }
+//
+//    func calculation () -> Double {
+//        return first + second
+//    }
+//}
+//
+//class SubstractClass: AbstractOperation {
+//    var first: Double
+//
+//    var second: Double
+//
+//    init(first: String, second: String) {
+//        self.first = Double(first)!
+//        self.second = Double(second)!
+//    }
+//
+//    func calculation () -> Double {
+//        return first - second
+//    }
+//}
+//
+//class MultiplyClass: AbstractOperation {
+//    var first: Double
+//
+//    var second: Double
+//
+//    init(first: String, second: String) {
+//        self.first = Double(first)!
+//        self.second = Double(second)!
+//    }
+//
+//    func calculation () -> Double {
+//        return first * second
+//    }
+//}
+//
+//class DivideClass: AbstractOperation {
+//    var first: Double
+//
+//    var second: Double
+//
+//    init(first: String, second: String) {
+//        self.first = Double(first)!
+//        self.second = Double(second)!
+//    }
+//
+//    func calculation () -> Double {
+//        return first / second
+//    }
+//}
+//
+//class RestClass: AbstractOperation {
+//    var first: Double
+//
+//    var second: Double
+//
+//    init(first: String, second: String) {
+//        self.first = Double(first)!
+//        self.second = Double(second)!
+//    }
+//
+//    func calculation () -> Double {
+//        return first - (second * Double((Int(first / second))))
+//    }
+//}
+//
+//// 입력이 이루어지기 전까지는 초기값이 없기 때문에 옵셔널로 선언
+//var abstractoperation: AbstractOperation?
+//
+//switch fourOperator {
+//case "+":
+//    abstractoperation = AddClass(first: firstNumber, second: secondNumber)
+//case "-":
+//    abstractoperation = SubstractClass(first: firstNumber, second: secondNumber)
+//case "*":
+//    abstractoperation = MultiplyClass(first: firstNumber, second: secondNumber)
+//case "/":
+//    abstractoperation = DivideClass(first: firstNumber, second: secondNumber)
+//case "%":
+//    abstractoperation = RestClass(first: firstNumber, second: secondNumber)
+//default:
+//    print("다시 연산자를 입력하세요.")
+//}
+//
+//if let abstractoperation = abstractoperation {
+//    let calculator = Calculator(operate: abstractoperation)
+//    calculator.operationCalculator()
+//}
