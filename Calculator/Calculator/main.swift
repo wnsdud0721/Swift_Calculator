@@ -206,78 +206,78 @@
 // switch문을 Calculator 안으로
 // 다른 파일에서 Calculator를 이용할 때 더 용이함
 // Level3
-var firstNumber = readLine()!
-var fourOperator = readLine()!
-var secondNumber = readLine()!
-
-class Calculator {
-    var first: Double
-    var second: Double
-    let addclass: AddClass
-    let substractclass: SubstractClass
-    let multiplyclass: MultiplyClass
-    let divideclass: DivideClass
-    let restclass: RestClass
-    init (first: String, second: String, addclass: AddClass, substractclass: SubstractClass, multiplyclass: MultiplyClass, divideclass: DivideClass, restclass: RestClass) {
-        self.first = Double(first)!
-        self.second = Double(second)!
-        self.addclass = addclass
-        self.substractclass = substractclass
-        self.multiplyclass = multiplyclass
-        self.divideclass = divideclass
-        self.restclass = restclass
-    }
-    func operationCalculator () -> Double {
-        switch fourOperator {
-        case "+":
-            return addclass.addCalculator(first: first, second: second)
-        case "-":
-            return substractclass.substractCalculator(first: first, second: second)
-        case "*":
-            return multiplyclass.multiplyCalculator(first: first, second: second)
-        case "/":
-            return divideclass.divideCalculator(first: first, second: second)
-        case "%":
-            return restclass.restCalculator(first: first, second: second)
-        default:
-            print("다시 연산자를 입력하세요.")
-            return 0
-        }
-    }
-}
-class AddClass {
-    func addCalculator (first: Double, second: Double) -> Double {
-        return first + second
-    }
-}
-
-class SubstractClass {
-    func substractCalculator (first: Double, second: Double) -> Double {
-        return first - second
-    }
-}
-
-class MultiplyClass {
-    func multiplyCalculator (first: Double, second: Double) -> Double {
-        return first * second
-    }
-}
-
-class DivideClass {
-    func divideCalculator (first: Double, second: Double) -> Double {
-        return first / second
-    }
-}
-
-class RestClass {
-    func restCalculator(first: Double, second: Double) -> Double {
-        return first - (second * Double((Int(first / second))))
-    }
-}
-
-let calculator = Calculator(first: firstNumber, second: secondNumber, addclass: AddClass(), substractclass: SubstractClass(), multiplyclass: MultiplyClass(), divideclass: DivideClass(), restclass: RestClass())
-var result = calculator.operationCalculator()
-print(result)
+//var firstNumber = readLine()!
+//var fourOperator = readLine()!
+//var secondNumber = readLine()!
+//
+//class Calculator {
+//    var first: Double
+//    var second: Double
+//    let addclass: AddClass
+//    let substractclass: SubstractClass
+//    let multiplyclass: MultiplyClass
+//    let divideclass: DivideClass
+//    let restclass: RestClass
+//    init (first: String, second: String, addclass: AddClass, substractclass: SubstractClass, multiplyclass: MultiplyClass, divideclass: DivideClass, restclass: RestClass) {
+//        self.first = Double(first)!
+//        self.second = Double(second)!
+//        self.addclass = addclass
+//        self.substractclass = substractclass
+//        self.multiplyclass = multiplyclass
+//        self.divideclass = divideclass
+//        self.restclass = restclass
+//    }
+//    func operationCalculator () -> Double {
+//        switch fourOperator {
+//        case "+":
+//            return addclass.addCalculator(first: first, second: second)
+//        case "-":
+//            return substractclass.substractCalculator(first: first, second: second)
+//        case "*":
+//            return multiplyclass.multiplyCalculator(first: first, second: second)
+//        case "/":
+//            return divideclass.divideCalculator(first: first, second: second)
+//        case "%":
+//            return restclass.restCalculator(first: first, second: second)
+//        default:
+//            print("다시 연산자를 입력하세요.")
+//            return 0
+//        }
+//    }
+//}
+//class AddClass {
+//    func addCalculator (first: Double, second: Double) -> Double {
+//        return first + second
+//    }
+//}
+//
+//class SubstractClass {
+//    func substractCalculator (first: Double, second: Double) -> Double {
+//        return first - second
+//    }
+//}
+//
+//class MultiplyClass {
+//    func multiplyCalculator (first: Double, second: Double) -> Double {
+//        return first * second
+//    }
+//}
+//
+//class DivideClass {
+//    func divideCalculator (first: Double, second: Double) -> Double {
+//        return first / second
+//    }
+//}
+//
+//class RestClass {
+//    func restCalculator(first: Double, second: Double) -> Double {
+//        return first - (second * Double((Int(first / second))))
+//    }
+//}
+//
+//let calculator = Calculator(first: firstNumber, second: secondNumber, addclass: AddClass(), substractclass: SubstractClass(), multiplyclass: MultiplyClass(), divideclass: DivideClass(), restclass: RestClass())
+//var result = calculator.operationCalculator()
+//print(result)
 
 
 // Level_4
@@ -458,6 +458,91 @@ print(result)
 //    calculator.operationCalculator()
 //}
 
+
+// Level4_switch문 위치 변경
+//var firstNumber = readLine()!
+//var fourOperator = readLine()!
+//var secondNumber = readLine()!
+//
+//class Calculator {
+//    var first: Double
+//    var second: Double
+//    var operate: AbstractOperation
+//    init(first: String, second: String, operate: AbstractOperation) {
+//        self.first = Double(first)!
+//        self.second = Double(second)!
+//        self.operate = operate
+//    }
+//
+//    func operationCalculator (fourOperator: String) {
+//        var abstractoperation: AbstractOperation?
+//
+//        switch fourOperator {
+//        case "+":
+//            abstractoperation = AddClass()
+//        case "-":
+//            abstractoperation = SubstractClass()
+//        case "*":
+//            abstractoperation = MultiplyClass()
+//        case "/":
+//            abstractoperation = DivideClass()
+//        case "%":
+//            abstractoperation = RestClass()
+//        default:
+//            print("다시 연산자를 입력하세요.")
+//        }
+//
+//        if let abstractoperation = abstractoperation {
+//            self.operate = abstractoperation
+//            let result = self.operate.calculation(first: first, second: second)
+//            print(result)
+//        }
+//    }
+//}
+//
+//class AbstractOperation {
+//    func calculation (first: Double, second: Double) -> Double {
+//        return 0
+//    }
+//}
+//
+//class AddClass: AbstractOperation {
+//    override func calculation (first: Double, second: Double) -> Double {
+//
+//        return first + second
+//    }
+//}
+//
+//class SubstractClass: AbstractOperation {
+//    override func calculation (first: Double, second: Double) -> Double {
+//
+//        return first - second
+//    }
+//}
+//
+//class MultiplyClass: AbstractOperation {
+//    override func calculation (first: Double, second: Double) -> Double {
+//
+//        return first * second
+//    }
+//}
+//
+//class DivideClass: AbstractOperation {
+//    override func calculation (first: Double, second: Double) -> Double {
+//
+//        return first / second
+//    }
+//}
+//
+//class RestClass: AbstractOperation {
+//    override func calculation (first: Double, second: Double) -> Double {
+//
+//        return first - (second * Double((Int(first / second))))
+//    }
+//}
+//
+//let calculator = Calculator(first: firstNumber, second: secondNumber, operate: AbstractOperation())
+//calculator.operationCalculator(fourOperator: fourOperator)
 
 // protocol 사용
 // Level4
@@ -810,3 +895,119 @@ print(result)
 //        }
 //    }
 //}
+
+// Level4_Upgrade_switch문 위치 변경
+class Calculator {
+    var first: Double
+    var second: Double
+    var operate: AbstractOperation
+    init(first: String, second: String, operate: AbstractOperation) {
+        self.first = Double(first)!
+        self.second = Double(second)!
+        self.operate = operate
+    }
+
+    func operationCalculator(fourOperator: String) {
+        var abstractoperation: AbstractOperation?
+
+        switch fourOperator {
+        case "+":
+            abstractoperation = AddClass()
+        case "-":
+            abstractoperation = SubstractClass()
+        case "*":
+            abstractoperation = MultiplyClass()
+        case "/":
+            abstractoperation = DivideClass()
+        case "%":
+            abstractoperation = RestClass()
+        default:
+            print("다시 연산자를 입력하세요.")
+        }
+        if let abstractoperation = abstractoperation {
+            self.operate = abstractoperation
+            let result = self.operate.calculation(first: first, second: second)
+            print(result)
+            
+            first = result
+        }
+    }
+}
+
+class AbstractOperation {
+    func calculation (first: Double, second: Double) -> Double {
+        return 0
+    }
+}
+
+class AddClass: AbstractOperation {
+    override func calculation (first: Double, second: Double) -> Double {
+        return first + second
+    }
+}
+
+class SubstractClass: AbstractOperation {
+    override func calculation (first: Double, second: Double) -> Double {
+        return first - second
+    }
+}
+
+class MultiplyClass: AbstractOperation {
+    override func calculation (first: Double, second: Double) -> Double {
+        return first * second
+    }
+}
+
+class DivideClass: AbstractOperation {
+    override func calculation (first: Double, second: Double) -> Double {
+        return first / second
+    }
+}
+
+class RestClass: AbstractOperation {
+    override func calculation (first: Double, second: Double) -> Double {
+        return first - (second * Double((Int(first / second))))
+    }
+}
+
+var shouldContinue = true
+var previousResult: Double? = nil
+
+while shouldContinue {
+    if previousResult == nil {
+        print("첫 번째 숫자를 입력하세요: ", terminator: "")
+        let firstNumber = readLine()!
+
+        // 첫 번째 계산일 경우
+        print("연산자를 입력하세요 (+, -, *, /, %, q 종료): ", terminator: "")
+        let fourOperator = readLine()!
+
+        if fourOperator.lowercased() == "q" {
+            shouldContinue = false
+            break
+        }
+
+        print("두 번째 숫자를 입력하세요: ", terminator: "")
+        let secondNumber = readLine()!
+
+        let calculator = Calculator(first: firstNumber, second: secondNumber, operate: AbstractOperation())
+        calculator.operationCalculator(fourOperator: fourOperator)
+        previousResult = calculator.first // 첫 번째 계산 결과를 저장
+    } else {
+        // 이후 계산일 경우
+        print("연산자를 입력하세요 (+, -, *, /, %, q 종료): ", terminator: "")
+        let fourOperator = readLine()!
+
+        if fourOperator.lowercased() == "q" {
+            shouldContinue = false
+            break
+        }
+
+        print("두 번째 숫자를 입력하세요: ", terminator: "")
+        let secondNumber = readLine()!
+
+        let calculator = Calculator(first: String(previousResult!), second: secondNumber, operate: AbstractOperation())
+        calculator.operationCalculator(fourOperator: fourOperator)
+        previousResult = calculator.first
+    }
+}
