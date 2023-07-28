@@ -15,9 +15,8 @@
 - 의존역전원칙
 - 숫자 변수 포함 & 숫자 변수 미포함
 - 클래스를 이용한 방법 & protocol을 이용한 방법
-- switch문 Calculator 포함 & 미포함
 
-## Level4_Upgrade
+## Level4_final
 - while문을 이용하여 반복적으로 계산 실행
 - 첫번째 계산에서는 숫자 2개(firstNumber, secondNumber)와 연산자(fourOperator) 입력
 - 두번째 계산부터는 first가 첫번째 계산의 결과값으로 저장되어, 두번째 숫자와 연산자만 입력
